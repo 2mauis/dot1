@@ -465,4 +465,5 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 --{{{  auto run programs 
 awful.util.spawn_with_shell("fcitx -r")
 awful.util.spawn_with_shell("wicd-gtk -t")
-
+awful.util.spawn_with_shell("synapse -s ")
+--}}}
