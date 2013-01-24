@@ -78,7 +78,7 @@ theme.layout_tiletop    = awful.util.getdir("config") .. "/themes/dust/layouts/t
 theme.layout_spiral     = awful.util.getdir("config") .. "/themes/dust/layouts/spiralw.png"
 theme.layout_dwindle    = awful.util.getdir("config") .. "/themes/dust/layouts/dwindlew.png"
 
-theme.awesome_icon = awful.util.getdir("config") .. "/arch.png"
+theme.awesome_icon = awful.util.getdir("config") .. "/icon.png"
 
 theme.widget_disk     = awful.util.getdir("config") .. "/themes/dust/widgets/disk.png"
 theme.widget_ac       = awful.util.getdir("config") .. "/themes/dust/widgets/ac.png"

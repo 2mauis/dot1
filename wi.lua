@@ -5,10 +5,10 @@
 
 vicious = require("vicious")
 
-graphwidth  = 90
+graphwidth  = 80
 graphheight = 20
 pctwidth    = 40
-netwidth    = 80
+netwidth    = 70
 
 -- {{{ SPACERS
 spacer = widget({ type = "textbox" })
@@ -243,7 +243,7 @@ vicious.register(downwidget, vicious.widgets.net, "${wlan0 down_kb}k/s", 2)
 weather = widget({ type = "textbox" })
 vicious.register(weather, vicious.widgets.weather,
   "<span color='" .. beautiful.fg_em .. "'>${sky}</span> @ ${tempc}°C on",
-  1501, "ZSQD")
+  1501, "ZSNJ")
 weather:buttons(awful.util.table.join(awful.button({ }, 1,
   function() vicious.force({ weather }) end)))
 -- }}}
