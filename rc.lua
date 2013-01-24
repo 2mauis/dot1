@@ -104,7 +104,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = {
   { "awesome", myawesomemenu, beautiful.awesome_icon },
-  { "open terminal", terminal }
+  { "open terminal","xfce4-terminal" }
 } })
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
@@ -246,7 +246,7 @@ awful.key({ modkey,altkey },"l" , function() awful.util.spawn("xlock") end),
 
 --app hotkeys
 --  konsolle
-awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+awful.key({altkey,"Control" }, "t", function() awful.util.spawn("xfce4-terminal") end),
 awful.key({modkey,}, "Prior", function() awful.util.spawn("mpc prev") end),
 awful.key({modkey,},"Next", function() awful.util.spawn("mpc next") end),
 --awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
