@@ -104,7 +104,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = {
   { "awesome", myawesomemenu, beautiful.awesome_icon },
-  { "open terminal", terminal }
+  { "open terminal","xfce4-terminal" }
 } })
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
@@ -195,7 +195,7 @@ for s = 1, screen.count() do
     },
     volspacer, volbar.widget, volicon, spacer,
     batbar.widget, baticon, spacer,
-    pacwidget, pacicon, spacer,
+   -- pacwidget, pacicon, spacer,
     mpdwidget, mpdicon, spacer,
     mytasklist[s],
     layout = awful.widget.layout.horizontal.rightleft
@@ -205,14 +205,14 @@ for s = 1, screen.count() do
   mygraphbox[s] = awful.wibox({ position = "bottom", height = 18, screen = s,
     border_width = 1, border_color = beautiful.bg_widget })
   mygraphbox[s].widgets = {
-    mylauncher, spacer, spacer, spacer,
+    mylauncher, spacer,
     cpufreq, cpugraph0.widget, cpupct0, cpugraph1.widget, cpupct1,
     cpugraph2.widget, cpupct2,  cpugraph3.widget, cpupct3, tab,
     memused, membar.widget, mempct, tab,
     --swapused, swapbar.widget, swappct, tab,
     --rootfsused, rootfsbar.widget, rootfspct, tab,
-    txwidget, upgraph.widget, upwidget, tab,
-    rxwidget, downgraph.widget, downwidget, tab,
+    txwidget, upgraph.widget, upwidget,
+    rxwidget, downgraph.widget, downwidget,spacer,
     layout = awful.widget.layout.horizontal.leftright,
     {
       s == 1 and mysystray or nil,
@@ -241,6 +241,21 @@ globalkeys = awful.util.table.join(
     end),
   awful.key({ modkey, }, "w", function() mymainmenu:show({keygrabber=true}) end),
 
+--  lock screen
+awful.key({ modkey,altkey },"l" , function() awful.util.spawn("xlock") end),
+
+--app hotkeys
+--  konsolle
+awful.key({altkey,"Control" }, "t", function() awful.util.spawn("xfce4-terminal") end),
+awful.key({modkey,}, "Prior", function() awful.util.spawn("mpc prev") end),
+awful.key({modkey,},"Next", function() awful.util.spawn("mpc next") end),
+--awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+--awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+---awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+--awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+--awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+--awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+
   -- Layout manipulation
   awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx( 1) end),
   awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx( -1) end),
@@ -259,7 +274,7 @@ globalkeys = awful.util.table.join(
 	 mygraphbox[mouse.screen].visible = not mygraphbox[mouse.screen].visible
     end),
   -- Standard program
-  awful.key({ modkey, }, "Return", function() awful.util.spawn(terminal) end),
+  awful.key({ modkey, }, "Return", function() awful.util.spawn("terminal") end),
   awful.key({ modkey, "Shift" }, "Return", function() awful.util.spawn("xterm") end),
   awful.key({ modkey, "Control" }, "r", awesome.restart),
   awful.key({ modkey, "Shift" }, "q", awesome.quit),
@@ -274,12 +289,12 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1) end),
   awful.key({ modkey, }, "space", function() awful.layout.inc(layouts, 1) end),
   awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(layouts, -1) end),
-  awful.key({ modkey }, "Next",  function () awful.client.moveresize( 20,  20, -40, -40) end),
-  awful.key({ modkey }, "Prior", function () awful.client.moveresize(-20, -20,  40,  40) end),
-  awful.key({ modkey }, "Down",  function () awful.client.moveresize(  0,  20,   0,   0) end),
-  awful.key({ modkey }, "Up",    function () awful.client.moveresize(  0, -20,   0,   0) end),
-  awful.key({ modkey }, "Left",  function () awful.client.moveresize(-20,   0,   0,   0) end),
-  awful.key({ modkey }, "Right", function () awful.client.moveresize( 20,   0,   0,   0) end),
+ -- awful.key({ modkey }, "Next",  function () awful.client.moveresize( 20,  20, -40, -40) end),
+ -- awful.key({ modkey }, "Prior", function () awful.client.moveresize(-20, -20,  40,  40) end),
+  awful.key({ modkey }, "Down",  function () awful.client.moveresize(  0,  20,   0,   -20) end),
+  awful.key({ modkey }, "Up",    function () awful.client.moveresize(  0, -20,   0,   20) end),
+  awful.key({ modkey }, "Left",  function () awful.client.moveresize(-20,   0,   20,   0) end),
+  awful.key({ modkey }, "Right", function () awful.client.moveresize( 20,   0,   -20,   0) end),
   -- Prompt
   awful.key({ altkey }, "F2", function() mypromptbox[mouse.screen]:run() end),
   awful.key({ modkey }, "r", function() mypromptbox[mouse.screen]:run() end),
@@ -330,10 +345,10 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-  awful.key({ modkey, }, "f", function(c) c.fullscreen = not c.fullscreen end),
+  awful.key({ modkey, altkey}, "f", function(c) c.fullscreen = not c.fullscreen end),
   awful.key({ altkey, }, "F4", function(c) c:kill() end),
   awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end),
-  awful.key({ modkey, "Shift" }, "f", awful.client.floating.toggle ),
+  awful.key({ modkey,  }, "f", awful.client.floating.toggle ),
   awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
   awful.key({ modkey, }, "o", awful.client.movetoscreen ),
   awful.key({ modkey, "Shift" }, "r", function(c) c:redraw() end),
@@ -461,3 +476,12 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+--
+--{{{  auto run programs 
+awful.util.spawn_with_shell("fcitx -r")
+awful.util.spawn_with_shell("wicd-gtk -t")
+awful.util.spawn_with_shell("synapse -s ")
+--awful.util.spawn_with_shell("xbindkeys ")
+awful.util.spawn_with_shell("pnmixer ")
+
+--}}}
