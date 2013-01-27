@@ -1,2 +1,0 @@
-#!/bin/bash
-awmtt start -D 3 -C $1 -S 1280x800
