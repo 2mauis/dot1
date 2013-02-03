@@ -250,11 +250,7 @@ awful.key({altkey,"Control" }, "t", function() awful.util.spawn("xfce4-terminal"
 awful.key({modkey,}, "Prior", function() awful.util.spawn("mpc prev") end),
 awful.key({modkey,},"Next", function() awful.util.spawn("mpc next") end),
 awful.key({altkey, }, "t", function() awful.util.spawn("konsole") end),
---awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
----awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
---awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
---awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
---awful.key({altkey,"Control" }, "t", function() awful.util.spawn("terminal") end),
+
 
   -- Layout manipulation
   awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx( 1) end),
