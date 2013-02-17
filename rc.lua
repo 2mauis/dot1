@@ -218,7 +218,7 @@ for s = 1, screen.count() do
     layout = awful.widget.layout.horizontal.leftright,
     {
       s == 1 and mysystray or nil,
-weather,
+      weather,
       layout = awful.widget.layout.horizontal.rightleft
     }
   }
