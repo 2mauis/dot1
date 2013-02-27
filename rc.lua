@@ -248,10 +248,10 @@ awful.key({ modkey,altkey },"l" , function() awful.util.spawn("xlock") end),
 
 --app hotkeys
 --  konsolle
-awful.key({altkey,"Control" }, "t", function() awful.util.spawn("xfce4-terminal") end),
+awful.key({altkey,"Control" }, "t", function() awful.util.spawn("gnome-terminal") end),
 awful.key({modkey,}, "Prior", function() awful.util.spawn("mpc prev") end),
 awful.key({modkey,},"Next", function() awful.util.spawn("mpc next") end),
-awful.key({altkey, }, "t", function() awful.util.spawn("gnome-terminal") end),
+awful.key({altkey, }, "t", function() awful.util.spawn("xfce-terminal") end),
 
 
   -- Layout manipulation

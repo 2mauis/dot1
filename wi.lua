@@ -243,7 +243,7 @@ vicious.register(downwidget, vicious.widgets.net, "${wlan0 down_kb}k/s", 2)
 weather = widget({ type = "textbox" })
 vicious.register(weather, vicious.widgets.weather,
   "<span color='" .. beautiful.fg_em .. "'>${sky}</span> @ ${tempc}°C ",
-  1501, "ZSNJ")
+  1501, "ZGSZ")
 weather:buttons(awful.util.table.join(awful.button({ }, 1,
   function() vicious.force({ weather }) end)))
 -- }}}
