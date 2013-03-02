@@ -441,7 +441,11 @@ awful.rules.rules = {
   { rule = { class = "Thunar" },
     properties = { tag = tags[1][7] } },
   { rule = { class = "Gimp" },
-    properties = { tag = tags[1][8] } }
+    properties = { tag = tags[1][8] } },
+   { rule = { instance = "plugin-container" },
+        properties = { floating = true } },
+  { rule = { instance = "exe" },
+  properties = { floating = true } }
 }
 -- }}}
 
